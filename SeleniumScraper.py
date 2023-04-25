@@ -2,16 +2,9 @@ import time
 from typing import KeysView
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.by import By
 
-# options = Options()
-# options.headless = True
-# options.add_argument("--window-size=1920,1200")
-
-# DRIVER_PATH = 'chromedriver.exe'
-# driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
-# driver.get("https://www.nintendo.com/")
-# # print(driver.page_source)
-# # driver.quit()
 
 DRIVER_PATH = 'chromedriver.exe'
 
@@ -20,8 +13,12 @@ options.add_experimental_option('excludeSwitches', ['enable-logging'])
 options.add_argument("--window-size=1920,1200")
 driver = webdriver.Chrome(options=options, executable_path=DRIVER_PATH)
 
-searchItem = input("What do you want to search?: ")
-driver.get("https://www.google.com/search?q="+searchItem)
+driver.get("https://clickspeedtest.com/")
+button = driver.find_element(By.ID, "clicker")
+counter = 0
+while counter < 100:
+    button.click()
+    counter = counter + 1
 
 input("Enter anything to close: ")
 
